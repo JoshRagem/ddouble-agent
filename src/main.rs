@@ -1,3 +1,4 @@
+extern crate ddouble;
 extern crate bytes;
 extern crate futures;
 extern crate tokio_io;
@@ -24,4 +25,5 @@ fn main() {
     let handle = l.handle();
     let socket = UdpSocket::bind(&addr, &handle).unwrap();
     println!("Listening on: {}", addr);
+    socket.framed(DogstatsCodec)
 }
